@@ -4,7 +4,7 @@ import axios from "../../axios/axios"
 import { IAirport, ServerResponse } from "../../models/models"
 import { airportSlice } from "../slice/airoportSlice"
 import { airportPageSlice } from "../slice/airportPage"
-import {handbookSlice} from "../slice/handbookSlice"
+import { handbookSlice } from "../slice/handbookSlice"
 
 
 export const fetchAirports = (page: Number = 1) => {
