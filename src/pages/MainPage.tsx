@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { AirportCard } from "../component/AirportCard";
 import { AirportFilter } from "../component/AirportFilter";
 import { AirportSearch } from "../component/AirportSearch";
-import { fetchAirports } from "../store/actions/airportActions";
+import { fetchAirports, fiteredResult } from "../store/actions/airportActions";
 import { useAppDispatch, useAppSelector } from "../store/hook/redux";
 
 
@@ -13,14 +13,23 @@ export function MainPage() {
     const { airports, loading, error, currentPage, total } = useAppSelector(state => state.airport)
     const [page, setPage] = useState(1)
     console.log({page})
+   
+    
+
     useEffect(() => {
         dispatch(fetchAirports(page))
+        
     }, [dispatch, page])
 
+    if(airports.length !== 0){
+         dispatch(fiteredResult([...airports]))
+    }
 
+    
     const pageCount = total
     const pageChangeHandler = ({ selected }: { selected: number }) => {
         setPage(selected + 1)
+        // dispatch(fetchAirports(page))
     }
     return (
         <div className="container mx-auto max-w-[760px] pt-5">

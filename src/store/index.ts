@@ -1,11 +1,14 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import airportReducers from './slice/airoportSlice'
 import airportPageReducers from './slice/airportPage'
+import selectedSearchReducers from './slice/handbookSlice'
+
 
 
 const rootReducer = combineReducers({
     airport: airportReducers,
-    airportPage: airportPageReducers
+    airportPage: airportPageReducers,
+    selectedSearch: selectedSearchReducers
 })
 
 export function setupStore(){
