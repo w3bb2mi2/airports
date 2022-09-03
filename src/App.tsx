@@ -10,6 +10,7 @@ function App() {
   return (
     <div>
       <Navigation />
+      
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/auth' element={<AuthPage />} />

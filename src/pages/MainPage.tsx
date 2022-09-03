@@ -12,20 +12,27 @@ export function MainPage() {
     const dispatch = useAppDispatch()
     const { airports, loading, error, currentPage, total } = useAppSelector(state => state.airport)
     const [page, setPage] = useState(1)
-    console.log({page})
-   
-    
+    console.log({ page })
+
+
 
     useEffect(() => {
         dispatch(fetchAirports(page))
-        
+
     }, [dispatch, page])
 
-    if(airports.length !== 0){
-         dispatch(fiteredResult([...airports]))
+    if (airports.length !== 0) {
+        dispatch(fiteredResult([...airports]))
     }
 
-    
+    useEffect(() => {
+        if (airports.length !== 0) {
+            dispatch(fiteredResult([...airports]))
+        }
+
+    }, [])
+
+
     const pageCount = total
     const pageChangeHandler = ({ selected }: { selected: number }) => {
         setPage(selected + 1)
@@ -33,7 +40,7 @@ export function MainPage() {
     }
     return (
         <div className="container mx-auto max-w-[760px] pt-5">
-           
+
             {loading && <p className="text-center text-lg">Loading...</p>}
             {error && <p className="text-center text-red-500">Error...</p>}
             {!loading &&

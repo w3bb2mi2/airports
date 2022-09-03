@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { fetchAirportPage } from "../../store/actions/airportActions"
 import { useAppSelector } from "../../store/hook/redux"
-import { MainPage } from "../MainPage"
+
 
 
 export function AirportDetailPage() {

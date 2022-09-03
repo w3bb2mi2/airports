@@ -22,7 +22,6 @@ export const handbookSlice = createSlice({
         handbookReducer(state, action){
             let conuntries:string[] = Array.from(new Set(action.payload))
             state.country = conuntries
-
         }
     }
 })
