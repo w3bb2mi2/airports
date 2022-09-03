@@ -1,28 +1,33 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useHref, useNavigate } from "react-router-dom";
+import { register } from "../store/actions/authAction";
+import { useAppSelector } from "../store/hook/redux";
+import { useEffect, useState } from "react";
 
 
 export function AuthPage() {
-
+    const {isAuth} = useAppSelector(state=>state.authReducer)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const onFinish = async(values) => {
-        //console.log({values});
-        const {login, password}= values
-       
-        axios.post("http://localhost:5000/auth", {
-            login, password
-        })
-
-
+        dispatch(register(values))
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    useEffect(()=>{
+        if(isAuth){
+            navigate("/")
+        }
+    },[isAuth])   
     
     return (
         <div className="formWrapper">
             <Form
-                //layout="vertical"
                 name="basic"
                 labelCol={{
                     span: 8,

@@ -12,8 +12,8 @@ app.post("/auth", (req, res)=>{
 })
 
 app.post("/registration", (req, res)=>{
-    console.log(req.body)
-    res.json({"access":"Доступ открыт", "refresh":""})
+    console.log(req.body.values.login)
+    res.json({"access":"Доступ открыт", "username":req.body.values.login})
 })
 
 

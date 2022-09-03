@@ -12,10 +12,6 @@ export function MainPage() {
     const dispatch = useAppDispatch()
     const { airports, loading, error, currentPage, total } = useAppSelector(state => state.airport)
     const [page, setPage] = useState(1)
-    console.log({ page })
-
-
-
     useEffect(() => {
         dispatch(fetchAirports(page))
 
